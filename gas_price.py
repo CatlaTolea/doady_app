@@ -6,11 +6,15 @@ from bs4 import BeautifulSoup
 
 class Gas:
 
-    def __init__(self, path="config.json"):
-        with open(path, "r") as f:
-            config = json.loads(f.read())
+    def __init__(self, config: dict, fuel_type: str = "benzina"):
+        if fuel_type == "benzina":
+            url = config.get("gas_url")
+        else:
+            url = config.get("diesel_url")
 
-        self.dict_prices = self.get_html_for_gas(config.get("gas_url"))
+        # url = config.get("gas_url") if fuel_type=="benzina"
+
+        self.dict_prices = self.get_html_for_gas(url)
         self.avg_price = self.calculate_average()
 
 
@@ -46,5 +50,9 @@ class Gas:
 
 
 if __name__ == '__main__':
-    gas = Gas()
+    path = "config.json"
+    with open(path, "r") as f:
+        config = json.loads(f.read())
+
+    gas = Gas(config)
     print(gas.avg_price)
