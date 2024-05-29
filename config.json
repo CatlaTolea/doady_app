@@ -1,6 +1,7 @@
 {
   "gas_url": "https://www.pretbenzina.ro/",
-  "diesel_url": "https://www.pretbenzina.ro/pret-motorina"
+  "diesel_url": "https://www.pretbenzina.ro/pret-motorina",
+  "distance_url": "https://distante.infoturism.ro/distanta/"
 
 
 }
