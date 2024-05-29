@@ -6,10 +6,7 @@ from bs4 import BeautifulSoup
 
 class Distance:
 
-    def __init__(self, departure_city: str, destination_city: str, path: str = "config.json"):
-
-        with open(path, "r") as f:
-            config = json.loads(f.read())
+    def __init__(self, departure_city: str, destination_city: str, config: dict):
 
         self.departure_city = departure_city
         self.destination_city = destination_city
@@ -36,5 +33,9 @@ class Distance:
 
 
 if __name__ == '__main__':
+    path = "config.json"
+    with open(path, "r") as f:
+        config = json.loads(f.read())
+
     dist = Distance("Bucuresti", "Iasi")
     print(dist.km)
